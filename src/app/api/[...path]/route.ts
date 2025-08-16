@@ -4,7 +4,10 @@ import { NextRequest, NextResponse } from "next/server";
 const POSTHOG_HOST = "https://us.i.posthog.com";
 
 function setCorsHeaders(response: NextResponse) {
-  response.headers.set("Access-Control-Allow-Origin", "*");
+  response.headers.set(
+    "Access-Control-Allow-Origin",
+    "https://amanmeherally.com"
+  );
   response.headers.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
   response.headers.set(
     "Access-Control-Allow-Headers",
@@ -48,7 +51,7 @@ export const OPTIONS = () => {
   return NextResponse.json(null, {
     status: 200,
     headers: {
-      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Origin": "https://amanmeherally.com",
       "Access-Control-Allow-Methods": "POST, OPTIONS, GET",
       "Access-Control-Allow-Headers": "*",
     },
