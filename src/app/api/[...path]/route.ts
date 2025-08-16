@@ -14,7 +14,7 @@ function setCorsHeaders(response: NextResponse | Response) {
   return newHeaders;
 }
 
-async function handler(req: NextRequest) {
+export async function POST(req: NextRequest) {
   const path = req.nextUrl.pathname.replace("/api", "");
   const searchParams = req.nextUrl.search;
   const url = `${POSTHOG_HOST}${path}${searchParams}`;
@@ -45,6 +45,10 @@ async function handler(req: NextRequest) {
   });
 }
 
+export async function GET() {
+  return setCorsHeaders(NextResponse.json({ message: "GET request received" }));
+}
+
 export async function OPTIONS() {
   // Create a new response for the preflight request
   const response = new NextResponse(null, { status: 204 });
@@ -52,5 +56,3 @@ export async function OPTIONS() {
   const finalHeaders = setCorsHeaders(response);
   return new Response(null, { status: 204, headers: finalHeaders });
 }
-
-export { handler as GET, handler as POST };
