@@ -49,11 +49,12 @@ export async function GET() {
 
 export const OPTIONS = () => {
   return NextResponse.json(null, {
-    status: 200,
+    status: 204,
     headers: {
       "Access-Control-Allow-Origin": "https://amanmeherally.com",
       "Access-Control-Allow-Methods": "POST, OPTIONS, GET",
-      "Access-Control-Allow-Headers": "*",
+      "Access-Control-Allow-Credentials": "true",
+      "Access-Control-Allow-Headers": "Content-Type, Baggage, Sentry-Trace",
     },
   });
 };
